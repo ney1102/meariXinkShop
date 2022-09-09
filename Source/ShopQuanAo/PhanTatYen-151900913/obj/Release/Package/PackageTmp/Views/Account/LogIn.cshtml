@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model PhanTatYen_151900913.Models.AccountModels
+
+<head>
+    <style>
+        .khung {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            display: flex;
+        }
+
+        .sign-in-page {
+            width: 40%;
+        }
+    </style>
+</head>
+<div class="khung">
+
+
+    <div class="sign-in-page">
+        <div class="row">
+            <!-- create a new account -->
+            <div class="khung_DK">
+                <div class=" sign-in">
+                    <h4 class="">Sign in</h4>
+                    <p class="">Hello, Welcome to your account.</p>
+                    <div class="social-sign-in outer-top-xs">
+                        <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+                        <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+                    </div>
+                    @using (Html.BeginForm("LogIn", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Tên đăng nhập <span></span></label>
+                            @Html.TextBoxFor(x => x.TaiKhoan, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           name = "TaiKhoan",
+                           type = "text",
+                           id = "exampleInputEmail2",
+                           placeholder = "Nhập tên đăng nhập . . ."
+                       })
+                            @Html.ValidationMessageFor(x => x.TaiKhoan)
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Mật khẩu<span></span></label>
+                            @Html.PasswordFor(x => x.MatKhau, new
+                     {
+                         @class = "form-control unicase-form-control text-input",
+                              name = "MatKhau",
+                         type = "password",
+                         id = "exampleInputEmail1",
+                         placeholder = "Nhập mật khẩu . . ."
+                     })
+
+                            @Html.ValidationMessageFor(x => x.MatKhau)
+                        </div>
+                        <div class="radio outer-xs">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
+                            </label>
+                            <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
+                        </div>
+                        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

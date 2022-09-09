@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Catelogy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach(var i in ViewBag.SanPham)
+            {
+                @i.TenSanPham
+            }
+

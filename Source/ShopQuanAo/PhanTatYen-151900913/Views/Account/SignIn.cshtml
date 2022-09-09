@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PhanTatYen_151900913.Models.AccountModels
+
+<head>
+    <style>
+        .khung {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            display: flex;
+        }
+        h4{
+            text-align:center;
+        }
+        p {
+            text-align: center;
+        }
+        .sign-in-page {
+            width: 40%;
+        }
+
+    </style>
+</head>
+<div class="khung">
+
+
+    <div class="sign-in-page">
+        <div class="row">
+            <!-- create a new account -->
+            <div class="khung_DK">
+                <!-- Sign-in -->
+                <div class=" create-new-account">
+                    <h4 class="checkout-subtitle">TẠO TÀI KHOẢN</h4>
+                    <p class="text title-tag-line">Mời bạn nhập thông tin</p>
+                    @using (Html.BeginForm("SignIn", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Tên đăng nhập <span>*</span></label>
+                            @Html.TextBoxFor(x => x.TaiKhoan, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           name = "TaiKhoan",
+                           type = "text",
+                           id = "exampleInputEmail2",
+                           placeholder = "Nhập tên đăng nhập . . ."
+                       })
+                            @Html.ValidationMessageFor(x => x.TaiKhoan)
+                        </div>
+
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Họ và tên<span></span></label>
+                            @Html.TextBoxFor(x => x.HoTen, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           type = "text",
+                           id = "exampleInputEmail1",
+                           placeholder = "Nhập họ và tên . . ."
+                       })
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Ngày sinh<span></span></label>
+                            @Html.TextBoxFor(x => x.NgaySinh, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           type = "date",
+                           id = "exampleInputEmail2",
+                           placeholder = "Nhập họ và tên . . ."
+                       })
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Email <span></span></label>
+                            @Html.TextBoxFor(x => x.Email, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           type = "email",
+                           name = "Email",
+                           id = "exampleInputEmail2",
+                           placeholder = "Nhập email . . ."
+                       })
+                        </div>
+
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Số điện thoại<span></span></label>
+                            @Html.TextBoxFor(x => x.DienThoai, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           type = "tel",
+                           id = "exampleInputEmail1",
+                           placeholder = "Nhập số điện thoại . . ."
+                       })
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Mật khẩu<span>*</span></label>
+                            @Html.PasswordFor(x => x.MatKhau, new
+                     {
+                         @class = "form-control unicase-form-control text-input",
+                              name = "MatKhau",
+                         type = "password",
+                         id = "exampleInputEmail1",
+                         placeholder = "Nhập mật khẩu . . ."
+                     })
+
+                            @Html.ValidationMessageFor(x => x.MatKhau)
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail2">Xác nhận mật khẩu<span>*</span></label>
+
+                            @Html.PasswordFor(x => x.NhapLaiMatKhau, new
+                       {
+                           @class = "form-control unicase-form-control text-input",
+                           type = "password",
+                           id = "exampleInputEmail1",
+                           placeholder = "Nhập lại mật khẩu . . ."
+
+                       })
+                            @Html.ValidationMessageFor(x => x.NhapLaiMatKhau)
+                        </div>
+                        <button type="submit" id="btDK" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
+
+
+                    }
+                    <!--
+                                        <form action="/Account/SignIn" method="post" class="register-form outer-top-xs" role="form">
+                                           <div class="form-group">
+                                               <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
+                                               <input type="email"
+                                                      name="TaiKhoan"
+                                                      class="form-control unicase-form-control text-input"
+                                                      id="exampleInputEmail2">
+                                           </div>
+                                           <div class="form-group">
+                                               <label class="info-title" for="exampleInputEmail1">Họ và tên<span>*</span></label>
+                                               <input type="text"
+                                                      name="HoTen"
+                                                      class="form-control unicase-form-control text-input"
+                                                      id="exampleInputEmail1">
+                                           </div>
+                                           <div class="form-group">
+                                               <label class="info-title" for="exampleInputEmail1">Số điện thoại <span>*</span></label>
+                                               <input type="tel"
+                                                      name="DienThoai"
+                                                      class="form-control unicase-form-control text-input"
+                                                      id="exampleInputEmail1">
+                                           </div>
+                                           <div class="form-group">
+                                               <label class="info-title" for="exampleInputEmail1">Mật khẩu <span>*</span></label>
+                                               <input type="password"
+                                                      name="MatKhau"
+                                                      class="form-control unicase-form-control text-input"
+                                                      id="exampleInputEmail1">
+                                           </div>
+                                           <div class="form-group">
+                                               <label class="info-title" for="exampleInputEmail1">Nhập lại mật khẩu <span>*</span></label>
+                                               <input type="password" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                           </div>
+                                           <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
+                                       </form>
+                    -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

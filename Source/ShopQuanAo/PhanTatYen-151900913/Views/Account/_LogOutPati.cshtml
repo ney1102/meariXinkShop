@@ -1,0 +1,8 @@
+﻿@if (ViewBag.User == null)
+{
+    <li class="login"><a href="@Url.Action("LogIn", "Account")"><span>Login</span></a></li>
+}
+else
+{
+<li class="login"><a href="@Url.Action("_LogOut", "Account")"><span>Log Out</span></a></li>
+}
